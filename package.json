@@ -1,0 +1,65 @@
+{
+  "name": "crypto_push_notifications",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run prod",
+    "server": "node ./dist-server/src/app.js",
+    "dev": "NODE_ENV=development npm-run-all build server",
+    "build": "npm-run-all clean transpile",
+    "prod": "NODE_ENV=production npm-run-all build server",
+    "transpile": "babel ./server --out-dir dist-server",
+    "clean": "rimraf dist-server",
+    "watch:dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "bcryptjs": "^2.4.3",
+    "core-js": "^3.22.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "express-session": "^1.17.2",
+    "firebase-admin": "^10.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.1",
+    "mongoose-plugin-autoinc": "^1.1.9",
+    "npm-run-all": "^4.1.5",
+    "regenerator-runtime": "^0.13.9",
+    "swagger-ui-express": "^4.3.0",
+    "uuid4": "^2.0.2",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "eslint": "^8.14.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.3",
+    "utf-8-validate": "^5.0.4"
+  }
+}
